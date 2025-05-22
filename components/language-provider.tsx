@@ -1286,6 +1286,98 @@ const translations: Translations = {
     fr: "La Parade de Smoothies — le spectacle à siroter !",
     en: "Smoothie Parade — the show you can sip!"
   },
+  allEvents: {
+    fr: "Tous les événements",
+    en: "All Events"
+  },
+  corporateTeamBuilding: {
+    fr: "Team Building d'Entreprise",
+    en: "Corporate Team Building"
+  },
+  corporateTeamBuildingDesc: {
+    fr: "Une journée de cohésion d'équipe avec nos vélos à smoothie",
+    en: "A team building day with our smoothie bikes"
+  },
+  summerFestival: {
+    fr: "Festival d'Été",
+    en: "Summer Festival"
+  },
+  summerFestivalDesc: {
+    fr: "Animation festive et rafraîchissante pour votre festival",
+    en: "Festive and refreshing entertainment for your festival"
+  },
+  weddingReception: {
+    fr: "Réception de Mariage",
+    en: "Wedding Reception"
+  },
+  weddingReceptionDesc: {
+    fr: "Des smoothies uniques pour votre jour spécial",
+    en: "Unique smoothies for your special day"
+  },
+  universityWellnessDay: {
+    fr: "Journée Bien-être Universitaire",
+    en: "University Wellness Day"
+  },
+  universityWellnessDayDesc: {
+    fr: "Promotion de la santé et du bien-être sur le campus",
+    en: "Promoting health and wellness on campus"
+  },
+  productLaunch: {
+    fr: "Lancement de Produit",
+    en: "Product Launch"
+  },
+  productLaunchDesc: {
+    fr: "Animation innovante pour votre lancement",
+    en: "Innovative entertainment for your launch"
+  },
+  marathonRefreshment: {
+    fr: "Rafraîchissement Marathon",
+    en: "Marathon Refreshment"
+  },
+  marathonRefreshmentDesc: {
+    fr: "Énergie naturelle pour vos coureurs",
+    en: "Natural energy for your runners"
+  },
+  learnMoreEvent: {
+    fr: "En savoir plus",
+    en: "Learn More"
+  },
+  planYourEvent: {
+    fr: "Planifiez votre événement",
+    en: "Plan Your Event"
+  },
+  planYourEventDescription: {
+    fr: "Suivez ces étapes simples pour organiser votre événement parfait",
+    en: "Follow these simple steps to organize your perfect event"
+  },
+  step1Events: {
+    fr: "Étape 1: Choisissez votre forfait",
+    en: "Step 1: Choose your package"
+  },
+  step1EventsDescription: {
+    fr: "Sélectionnez le forfait qui correspond le mieux à vos besoins",
+    en: "Select the package that best suits your needs"
+  },
+  step2Events: {
+    fr: "Étape 2: Sélectionnez votre date",
+    en: "Step 2: Select your date"
+  },
+  step2EventsDescription: {
+    fr: "Choisissez la date et l'heure qui vous conviennent",
+    en: "Choose the date and time that works for you"
+  },
+  step3Events: {
+    fr: "Étape 3: Personnalisez votre expérience",
+    en: "Step 3: Customize your experience"
+  },
+  step3EventsDescription: {
+    fr: "Ajoutez des options supplémentaires selon vos souhaits",
+    en: "Add additional options according to your wishes"
+  },
+  contactUsEvents: {
+    fr: "Contactez-nous pour votre événement",
+    en: "Contact us for your event"
+  },
 }
 
 type LanguageContextType = {
