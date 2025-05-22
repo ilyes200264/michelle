@@ -1,14 +1,16 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import React, { createContext, useContext, useState, type ReactNode } from "react"
 
-type Language = "fr" | "en"
+type Language = 'fr' | 'en'
+
+type Translation = {
+  fr: string
+  en: string
+}
 
 type Translations = {
-  [key: string]: {
-    fr: string
-    en: string
-  }
+  [key: string]: Translation
 }
 
 const translations: Translations = {
@@ -903,6 +905,386 @@ const translations: Translations = {
   healthyAndFun: {
     fr: "Santé et plaisir en un tour de pédale",
     en: "Health and fun in one pedal turn",
+  },
+  littleKokiPackage: {
+    fr: "Le forfait Petit Koki",
+    en: "Little Koki Package"
+  },
+  kidsActivity: {
+    fr: "L'activité préférée des enfants !",
+    en: "Kids' favorite activity!"
+  },
+  littleKokiDescription: {
+    fr: "Parfait pour les fêtes d'anniversaire, les remises de diplômes de garderie ou les festivals familiaux, ce forfait transforme chaque événement en une explosion de plaisir, de rires et de saveurs !",
+    en: "Perfect for birthday parties, daycare graduations, or family festivals, this package turns every event into a burst of fun, laughter, and flavor!"
+  },
+  twoOptions: {
+    fr: "Deux options selon vos besoins",
+    en: "Two options to fit your needs"
+  },
+  kokiOption1: {
+    fr: "Option 1: 25 délicieux smoothies + 1 heure d'animation vitaminée",
+    en: "Option 1: 25 delicious smoothies + 1 hour of high-energy entertainment"
+  },
+  kokiOption2: {
+    fr: "Option 2: 50 délicieux smoothies + 2 heures d'animation vitaminée",
+    en: "Option 2: 50 delicious smoothies + 2 hours of high-energy entertainment"
+  },
+  chooseBasedOnChildren: {
+    fr: "(Choisissez selon le nombre d'enfants présents)",
+    en: "(Choose based on the number of children attending)"
+  },
+  kidFriendlyBike: {
+    fr: "1 vélo à smoothie adapté aux enfants (de 5 à 10 ans) — ils pédalent, ils mélangent, ils s'amusent !",
+    en: "1 kid-friendly blender bike (suitable for ages 5 to 10) — they pedal, they blend, they have a blast!"
+  },
+  freshColorfulSmoothies: {
+    fr: "Smoothies frais et colorés — préparés sur place avec énergie et joie !",
+    en: "Fresh and colorful smoothies — made on-site with energy and joy!"
+  },
+  livelyEntertainment: {
+    fr: "Animation dynamique — musique et ambiance festive inoubliable !",
+    en: "Lively entertainment — music, and an unforgettable festive atmosphere!"
+  },
+  giveKidsHealthyFun: {
+    fr: "Offrez aux enfants un moment sain, actif et totalement amusant !",
+    en: "Give kids a healthy, active, and totally fun experience!"
+  },
+  popSoloPackage: {
+    fr: "Le forfait Pop Solo",
+    en: "Pop Solo Package"
+  },
+  hitWithCrowds: {
+    fr: "Un succès garanti auprès des ados, adultes et familles !",
+    en: "A hit with teens, adults, and family crowds!"
+  },
+  popSoloDescription: {
+    fr: "Parfait pour les événements scolaires, fêtes d'entreprise, festivals communautaires ou toute occasion où vous souhaitez allier santé et ambiance festive !",
+    en: "Perfect for school events, office parties, community festivals, or any gathering where you want to mix health with high vibes!"
+  },
+  soloOption1: {
+    fr: "Option 1: 50 délicieux smoothies + 1,5 heures d'animation dynamique",
+    en: "Option 1: 50 delicious smoothies + 1.5 hours of high-energy entertainment"
+  },
+  soloOption2: {
+    fr: "Option 2: 75 délicieux smoothies + 2,5 heures d'animation dynamique",
+    en: "Option 2: 75 delicious smoothies + 2.5 hours of high-energy entertainment"
+  },
+  chooseBasedOnCrowd: {
+    fr: "(Choisissez selon la taille de votre groupe)",
+    en: "(Choose based on the size of your crowd)"
+  },
+  adultFriendlyBike: {
+    fr: "1 vélo à smoothie adapté aux adultes — ils pédalent, ils mélangent, ils s'éclatent !",
+    en: "1 adult-friendly blender bike (suitable for teens and adults) — they pedal, they blend, they POP with fun!"
+  },
+  giveGuestsMemorableExperience: {
+    fr: "Offrez à vos invités une expérience saine, active et inoubliable dont ils parleront longtemps !",
+    en: "Give your guests a healthy, active, and unforgettable experience they'll be talking about long after the last sip!"
+  },
+  doubleTheFun: {
+    fr: "Double le plaisir",
+    en: "Double the Fun"
+  },
+  twiceBikesTwiceFun: {
+    fr: "Deux fois plus de vélos, deux fois plus de plaisir, deux fois plus d'impact !",
+    en: "Twice the bikes, twice the fun, twice the impact!"
+  },
+  perfectFor: {
+    fr: "Parfait pour",
+    en: "Perfect for"
+  },
+  communityFestivals: {
+    fr: "Festivals communautaires",
+    en: "Community festivals"
+  },
+  nonProfitFairs: {
+    fr: "Foires à but non lucratif",
+    en: "Non-profit fairs"
+  },
+  grandOpenings: {
+    fr: "Inaugurations",
+    en: "Grand openings"
+  },
+  neighborhoodParties: {
+    fr: "Fêtes de quartier",
+    en: "Neighborhood block parties"
+  },
+  schoolOpenHouses: {
+    fr: "Portes ouvertes d'écoles",
+    en: "School open houses"
+  },
+  universityOpenDays: {
+    fr: "Journées portes ouvertes universitaires",
+    en: "University Open Days"
+  },
+  shoppingCenterEvents: {
+    fr: "Événements de centres commerciaux",
+    en: "Shopping center events"
+  },
+  conferencesExhibitions: {
+    fr: "Conférences et salons",
+    en: "Conferences and exhibitions"
+  },
+  christmasParties: {
+    fr: "Fêtes de Noël",
+    en: "Christmas parties"
+  },
+  cocktailParties: {
+    fr: "Soirées cocktail",
+    en: "Cocktail parties"
+  },
+  healthWellnessFairs: {
+    fr: "Salons santé et bien-être",
+    en: "Health & wellness fairs"
+  },
+  awarenessCampaigns: {
+    fr: "Campagnes de sensibilisation",
+    en: "Public awareness campaigns"
+  },
+  familyFestivals: {
+    fr: "Festivals familiaux",
+    en: "Family festivals"
+  },
+  employeeAppreciation: {
+    fr: "Journées d'appréciation des employés",
+    en: "Employee appreciation days"
+  },
+  schoolCelebrations: {
+    fr: "Célébrations scolaires",
+    en: "School celebrations"
+  },
+  threeOptions: {
+    fr: "Trois options selon vos besoins",
+    en: "Three options to fit your needs"
+  },
+  doubleOption1: {
+    fr: "Option 1: 100 délicieux smoothies + 2 heures d'animation énergique",
+    en: "Option 1: 100 delicious smoothies + 2 hours of high-energy entertainment"
+  },
+  doubleOption2: {
+    fr: "Option 2: 200 délicieux smoothies + 3 heures d'animation énergique",
+    en: "Option 2: 200 delicious smoothies + 3 hours of high-energy entertainment"
+  },
+  doubleOption3: {
+    fr: "Option 3: 300 délicieux smoothies + 4 heures d'animation énergique",
+    en: "Option 3: 300 delicious smoothies + 4 hours of high-energy entertainment"
+  },
+  twoAdultBikes: {
+    fr: "2 vélos à smoothie pour adultes — les participants pédalent ensemble, mélangent et créent une ambiance unique !",
+    en: "2 adult-friendly blender bikes — guests pedal together, blend together, and bring the fun to life!"
+  },
+  perfectPackageForCrowds: {
+    fr: "Le forfait idéal pour attirer les foules, créer des souvenirs durables et promouvoir un mode de vie actif et sain.",
+    en: "The perfect package to draw crowds, create memorable experiences, and promote healthy, active living."
+  },
+  readySetBlend: {
+    fr: "Prêts, Partez, Mixez !",
+    en: "Ready, Set, Blend!"
+  },
+  readySetBlendDescription: {
+    fr: "Offrez à vos employés une expérience unique où compétition et nutrition vont de pair ! Ce forfait spécial est conçu pour briser la glace, renforcer les liens et animer l'atmosphère de votre événement.",
+    en: "Get your team racing — not just for fun, but for the title of fastest blender on the floor! This competition-style smoothie bike package is the perfect way to break the ice, spark laughter, and create unforgettable memories."
+  },
+  corporateParties: {
+    fr: "Fêtes d'entreprise",
+    en: "Corporate parties"
+  },
+  companyRetreats: {
+    fr: "Retraites d'entreprise",
+    en: "Company retreats"
+  },
+  fundraisers: {
+    fr: "Collectes de fonds",
+    en: "Fundraisers"
+  },
+  wellnessChallenges: {
+    fr: "Défis bien-être",
+    en: "Wellness challenges"
+  },
+  dynamicEvents: {
+    fr: "Événements dynamiques",
+    en: "Dynamic events"
+  },
+  readyOption1: {
+    fr: "100 smoothies + 2 heures de compétition amusante",
+    en: "100 smoothies + 2 hours of interactive competition"
+  },
+  readyOption2: {
+    fr: "200 smoothies + 3 heures de courses énergiques",
+    en: "200 smoothies + 3 hours of high-energy racing fun"
+  },
+  liveLeaderboard: {
+    fr: "Tableau de classement en direct",
+    en: "Live leaderboard display"
+  },
+  speedMonitor: {
+    fr: "Moniteur de vitesse",
+    en: "Speed monitor"
+  },
+  dynamicHost: {
+    fr: "Animateur dynamique",
+    en: "Friendly host"
+  },
+  deliciousSmoothies: {
+    fr: "Délicieux smoothies préparés à la force des jambes",
+    en: "Delicious smoothies made by your own pedal power"
+  },
+  organizeChampionship: {
+    fr: "Organisez un mini championnat de smoothies",
+    en: "Turn your event into a mini Grand Prix smoothie"
+  },
+  stimulateCompetition: {
+    fr: "Stimulez une compétition amicale entre collègues",
+    en: "Encourage friendly rivalry between departments or guests"
+  },
+  getPartyStarted: {
+    fr: "Lancez la fête et récompensez les plus rapides",
+    en: "Make it a highlight of your party with prizes for the fastest blenders"
+  },
+  createMemories: {
+    fr: "Idéal pour créer des souvenirs positifs et des rires collectifs",
+    en: "Promote health, movement, and team spirit — all at once!"
+  },
+  parentChildPackage: {
+    fr: "Le forfait Défi Parent-Enfant",
+    en: "Parent-Child Challenge Package"
+  },
+  vitaminChallenge: {
+    fr: "Un défi vitaminé pour toute la famille !",
+    en: "A smoothie-powered challenge for the whole family!"
+  },
+  parentChildDescription: {
+    fr: "Transformez votre événement en un moment inoubliable avec ce forfait dynamique et engageant. Parfait pour les fêtes familiales, les écoles, les événements communautaires, les festivals ou les journées de quartier.",
+    en: "Turn your event into an unforgettable moment with this dynamic and engaging package. Perfect for family parties, schools, community events, festivals, or neighborhood days."
+  },
+  option1Classic: {
+    fr: "Option 1 – Classique",
+    en: "Option 1 – Classic"
+  },
+  classic50Smoothies: {
+    fr: "✓50 smoothies (270 ml)",
+    en: "✓50 smoothies (270 ml)"
+  },
+  classic2Hours: {
+    fr: "✓2 heures de compétition amicale",
+    en: "✓2 hours of friendly competition"
+  },
+  classicBikes: {
+    fr: "✓1 vélo enfant + 1 vélo adulte",
+    en: "✓1 kid-sized blender bike + 1 adult-sized blender bike"
+  },
+  option2Challenge: {
+    fr: "Option 2 – Le Grand Défi",
+    en: "Option 2 – The Big Challenge"
+  },
+  challenge100Smoothies: {
+    fr: "✓100 smoothies (270 ml)",
+    en: "✓100 smoothies (270 ml)"
+  },
+  challenge3Hours: {
+    fr: "✓3 heures d'animation énergique",
+    en: "✓3 hours of energetic entertainment"
+  },
+  challengeBikes: {
+    fr: "✓2 vélos (enfant + adulte)",
+    en: "✓2 blender bikes (child + adult)"
+  },
+  coordinationTable: {
+    fr: "✓Table de coordination pour votre équipe",
+    en: "✓Table coordination for your team or organization"
+  },
+  winningMedal: {
+    fr: "✓Médaille remise à la famille gagnante du défi !",
+    en: "✓Medal awarded to the winning parent-child team!"
+  },
+  uniqueActivity: {
+    fr: "Une activité intergénérationnelle unique et engageante",
+    en: "A unique and engaging intergenerational activity"
+  },
+  professionalEntertainment: {
+    fr: "Animation professionnelle et ambiance festive",
+    en: "Professional entertainment and a festive atmosphere"
+  },
+  friendlyCompetition: {
+    fr: "Compétition amicale et souvenirs mémorables",
+    en: "Friendly competition and lasting memories"
+  },
+  bestTeamWins: {
+    fr: "Que le meilleur duo parent-enfant gagne... et savoure le smoothie de la victoire !",
+    en: "Let the best parent-child duo win… and taste victory in smoothie form!"
+  },
+  smoothieParadePackage: {
+    fr: "Le forfait Parade de Smoothies",
+    en: "Smoothie Parade Package"
+  },
+  threeBikesTripleFun: {
+    fr: "Trois vélos. Triple plaisir. Une ambiance inoubliable !",
+    en: "Three bikes. Triple the fun. An unforgettable vibe!"
+  },
+  paradeDescription: {
+    fr: "Laissez l'énergie, la couleur et la joie circuler ! Le forfait Parade de Smoothies est notre offre la plus festive et interactive — conçue pour transformer n'importe quel événement en une célébration du mouvement et de la saveur.",
+    en: "Roll out the energy, color, and joy! The Smoothie Parade is our most festive and interactive package — designed to turn any event into a celebration of movement and flavor."
+  },
+  paradeAdultKidBikes: {
+    fr: "2 vélos adultes + 1 vélo enfant (5 à 10 ans)",
+    en: "2 adult bikes + 1 kid-friendly bike (ages 5 to 10)"
+  },
+  optionsAvailable: {
+    fr: "Options disponibles",
+    en: "Options available"
+  },
+  parade200Smoothies: {
+    fr: "200 smoothies – 3 heures",
+    en: "200 smoothies – 3 hours"
+  },
+  parade300Smoothies: {
+    fr: "300 smoothies – 4 heures",
+    en: "300 smoothies – 4 hours"
+  },
+  parade400Smoothies: {
+    fr: "400 smoothies – 5 heures",
+    en: "400 smoothies – 5 hours"
+  },
+  communityParades: {
+    fr: "Parades communautaires",
+    en: "Community parades"
+  },
+  openHouseEvents: {
+    fr: "Journées portes ouvertes (écoles, gymnases, centres communautaires)",
+    en: "Open house events (schools, gyms, community centers)"
+  },
+  neighborhoodFestivals: {
+    fr: "Festivals de quartier",
+    en: "Neighborhood festivals"
+  },
+  schoolEvents: {
+    fr: "Événements et fêtes scolaires",
+    en: "School events and celebrations"
+  },
+  familyFunDays: {
+    fr: "Journées familiales",
+    en: "Family fun days"
+  },
+  healthWellnessCampaigns: {
+    fr: "Campagnes santé et bien-être",
+    en: "Health & wellness campaigns"
+  },
+  youthEvents: {
+    fr: "Événements jeunesse",
+    en: "Youth-focused events"
+  },
+  largeScaleLaunches: {
+    fr: "Lancements et activations à grande échelle",
+    en: "Large-scale launches and activations"
+  },
+  giveHealthyExperience: {
+    fr: "Offrez à votre communauté une expérience saine, active et totalement festive.",
+    en: "Give your community a healthy, active, and totally festive experience."
+  },
+  smoothieParadeShow: {
+    fr: "La Parade de Smoothies — le spectacle à siroter !",
+    en: "Smoothie Parade — the show you can sip!"
   },
 }
 
