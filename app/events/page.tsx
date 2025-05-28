@@ -1,242 +1,174 @@
-"use client"
-
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, Calendar, Users, MapPin } from "lucide-react"
-import { LanguageProvider, useLanguage } from "@/components/language-provider"
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
+
+const upcomingEvents = [
+  {
+    id: 1,
+    date: "15-17 Juin 2024",
+    name: "Festival Eco-Responsable de Montréal",
+    location: "Parc Jean-Drapeau",
+    description: "Venez nous rencontrer et déguster nos smoothies bio!",
+  },
+  {
+    id: 2,
+    date: "8 Juillet 2024",
+    name: "Marché des Saveurs de Sherbrooke",
+    location: "Centre-ville de Sherbrooke",
+    description: "Une journée dédiée aux produits locaux et artisanaux.",
+  },
+  {
+    id: 3,
+    date: "22-23 Juillet 2024",
+    name: "Festival des Traditions du Monde",
+    location: "Drummondville",
+    description: "Célébrez la diversité culturelle avec nos smoothies exotiques.",
+  },
+  {
+    id: 4,
+    date: "5-6 Août 2024",
+    name: "Fête des Récoltes",
+    location: "Saint-Hyacinthe",
+    description: "Smoothies préparés avec les fruits frais de la saison.",
+  },
+]
+
+const pastEvents = [
+  {
+    id: 1,
+    name: "Mariage de Sophie et Jean",
+    type: "Événement privé",
+    testimonial: "Frooshy a ajouté une touche unique à notre mariage. Nos invités ont adoré!",
+  },
+  {
+    id: 2,
+    name: "Conférence TechMontréal 2023",
+    type: "Événement corporatif",
+    testimonial: "Un service impeccable et des smoothies délicieux. Hautement recommandé!",
+  },
+  {
+    id: 3,
+    name: "Festival d'été de Québec 2023",
+    type: "Festival",
+    testimonial: "Les vélos à smoothies ont été un grand succès auprès des festivaliers.",
+  },
+]
 
 export default function EventsPage() {
   return (
-    <LanguageProvider>
-      <EventsContent />
-    </LanguageProvider>
-  )
-}
-
-function EventsContent() {
-  const { t } = useLanguage()
-  const [activeCategory, setActiveCategory] = useState("all")
-
-  const eventCategories = [
-    { id: "all", name: t("allEvents") },
-    { id: "corporate", name: t("corporateEvents") },
-    { id: "private", name: t("privateParties") },
-    { id: "festivals", name: t("festivalsMarkets") },
-    { id: "schools", name: t("schoolsUniversities") },
-    { id: "brand", name: t("brandActivations") },
-    { id: "sport", name: t("sportingEvents") },
-  ]
-
-  const events = [
-    {
-      id: 1,
-      title: t("corporateTeamBuilding"),
-      description: t("corporateTeamBuildingDesc"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/corporatesmakingsmoothies.jpg-wbL8hV3r6cgHixCeLRQ6e9b57IC8f4.jpeg",
-      date: "2025-06-15",
-      location: "Montréal, QC",
-      category: "corporate",
-      package: "group",
-    },
-    {
-      id: 2,
-      title: t("summerFestival"),
-      description: t("summerFestivalDesc"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bike-n-blend-smoothie-bike-fun.jpg-WjlsqLWWpcQ5JIeg9d92tM53HvEjUd.jpeg",
-      date: "2025-07-22",
-      location: "Québec, QC",
-      category: "festivals",
-      package: "group",
-    },
-    {
-      id: 3,
-      title: t("weddingReception"),
-      description: t("weddingReceptionDesc"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bike-n-blend-tandem-package.jpg-H6Md5Oq89bnoZH02MWwl7JSwaxpH3B.jpeg",
-      date: "2025-08-10",
-      location: "Laval, QC",
-      category: "private",
-      package: "duo",
-    },
-    {
-      id: 4,
-      title: t("universityWellnessDay"),
-      description: t("universityWellnessDayDesc"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/T_1-large-and-1-small-bike-XRWepYeepNNXogQ6Y9Y6GtR0krBtPQ.jpeg",
-      date: "2025-09-05",
-      location: "Sherbrooke, QC",
-      category: "schools",
-      package: "solo",
-    },
-    {
-      id: 5,
-      title: t("productLaunch"),
-      description: t("productLaunchDesc"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Packages-596-Edit.jpg-mDzWpJaGg1PvSPBjAuWPeQ0LPsovtz.jpeg",
-      date: "2025-10-12",
-      location: "Montréal, QC",
-      category: "brand",
-      package: "group",
-    },
-    {
-      id: 6,
-      title: t("marathonRefreshment"),
-      description: t("marathonRefreshmentDesc"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/produit-velo-blender-smoothie-smoocycle-30.jpg-d7ERP6jj8kIP1z1hVzzF0hAJD62pds.jpeg",
-      date: "2025-05-30",
-      location: "Trois-Rivières, QC",
-      category: "sport",
-      package: "group",
-    },
-  ]
-
-  const filteredEvents = activeCategory === "all" ? events : events.filter((event) => event.category === activeCategory)
-
-  return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-50 w-full bg-white border-b">
-        <div className="container flex items-center justify-between h-16 px-4 md:px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-yellow-500">Frooshy</span>
-          </Link>
+      {/* Hero Section */}
+      <section className="relative h-[50vh] bg-gradient-to-r from-primary/20 to-secondary/20">
+        <div className="absolute inset-0">
+          <Image src="/images/events-hero.jpg" alt="Événements - Frooshy" fill className="object-cover" priority />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
-      </header>
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-yellow-50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-start gap-4 mb-8">
-              <Link href="/" className="flex items-center text-sm text-gray-600 hover:text-gray-900">
-                <ChevronLeft className="mr-1 h-4 w-4" />
-                {t("backToHome")}
-              </Link>
-              <motion.h1
-                className="text-3xl font-bold tracking-tighter sm:text-5xl text-green-600"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {t("ourEvents")}
-              </motion.h1>
-              <motion.p
-                className="text-gray-700 md:text-xl max-w-[800px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                {t("eventsPageDescription")}
-              </motion.p>
-            </div>
+        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">Événements</h1>
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl animate-slide-up">
+            Retrouvez-nous lors de nos prochains événements
+          </p>
+        </div>
+      </section>
 
-            <div className="mb-10 overflow-x-auto">
-              <div className="flex space-x-2 min-w-max pb-2">
-                {eventCategories.map((category) => (
-                  <Button
-                    key={category.id}
-                    variant={activeCategory === category.id ? "default" : "outline"}
-                    className={activeCategory === category.id ? "bg-green-500 hover:bg-green-600" : "hover:bg-green-50"}
-                    onClick={() => setActiveCategory(category.id)}
-                  >
-                    {category.name}
+      {/* Upcoming Events */}
+      <section className="py-16 bg-gradient-to-b from-background to-muted">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Événements à venir</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {upcomingEvents.map((event) => (
+              <Card key={event.id} className="hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold mb-2">{event.name}</h3>
+                      <p className="text-primary font-semibold">{event.date}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm text-muted-foreground">{event.location}</p>
+                    </div>
+                  </div>
+                  <p className="mb-4">{event.description}</p>
+                  <Button asChild variant="outline">
+                    <Link href="/contact">Plus d'infos</Link>
                   </Button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {filteredEvents.map((event) => (
-                <motion.div
-                  key={event.id}
-                  className="flex flex-col overflow-hidden rounded-lg border bg-white shadow-sm transition-all hover:shadow-md"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={event.image || "/placeholder.svg"}
-                      alt={event.title}
-                      className="h-full w-full object-cover"
-                    />
-                    <div className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-                      {t(event.package + "Package")}
-                    </div>
-                  </div>
-                  <div className="flex-1 p-6">
-                    <h3 className="text-xl font-bold">{event.title}</h3>
-                    <p className="mt-2 text-sm text-gray-600">{event.description}</p>
-                    <div className="mt-4 space-y-2">
-                      <div className="flex items-center text-sm">
-                        <Calendar className="mr-2 h-4 w-4 text-green-500" />
-                        <span>
-                          {new Date(event.date).toLocaleDateString("fr-CA", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
-                        </span>
-                      </div>
-                      <div className="flex items-center text-sm">
-                        <MapPin className="mr-2 h-4 w-4 text-green-500" />
-                        <span>{event.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-6 pt-0">
-                    <Button className="w-full bg-green-500 hover:bg-green-600">{t("learnMoreEvent")}</Button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-16 p-8 bg-white rounded-xl shadow-sm border">
-              <h2 className="text-2xl font-bold text-green-600 mb-4">{t("planYourEvent")}</h2>
-              <p className="text-gray-700 mb-6">{t("planYourEventDescription")}</p>
-
-              <div className="grid gap-6 md:grid-cols-3">
-                <div className="space-y-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
-                    <Calendar className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-bold text-lg">{t("step1Events")}</h3>
-                  <p className="text-sm text-gray-600">{t("step1EventsDescription")}</p>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100 text-yellow-600">
-                    <Users className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-bold text-lg">{t("step2Events")}</h3>
-                  <p className="text-sm text-gray-600">{t("step2EventsDescription")}</p>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600">
-                    <MapPin className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-bold text-lg">{t("step3Events")}</h3>
-                  <p className="text-sm text-gray-600">{t("step3EventsDescription")}</p>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center">
-                <Button className="bg-green-500 hover:bg-green-600 px-8">{t("contactUsEvents")}</Button>
-              </div>
-            </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </section>
-      </main>
-      <footer className="w-full border-t bg-green-600 text-white py-6">
-        <div className="container px-4 md:px-6 text-center">
-          <p>© 2025 Frooshy. {t("allRightsReserved")}</p>
         </div>
-      </footer>
+      </section>
+
+      {/* Past Events */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Événements passés</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pastEvents.map((event) => (
+              <Card key={event.id} className="bg-muted">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{event.name}</h3>
+                  <p className="text-sm text-primary mb-4">{event.type}</p>
+                  <p className="italic">"{event.testimonial}"</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Book Us Section */}
+      <section className="py-16 bg-primary/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Réservez-nous pour votre événement</h2>
+            <p className="text-xl mb-8">
+              Que ce soit pour un événement corporatif, un mariage, un anniversaire ou tout autre célébration, nous
+              apportons une touche unique et mémorable avec nos vélos à smoothies.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">500+</div>
+                <p>Événements réalisés</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">50,000+</div>
+                <p>Smoothies servis</p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                <p>Clients satisfaits</p>
+              </div>
+            </div>
+            <Button asChild size="lg">
+              <Link href="/contact">Réserver maintenant</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-primary text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Ne manquez pas nos prochains événements</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Suivez-nous sur les réseaux sociaux pour rester informé de nos apparitions publiques et événements spéciaux.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+              <Link href="https://www.facebook.com/frooshy" target="_blank" rel="noopener noreferrer">
+                Facebook
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+              <Link href="https://www.instagram.com/frooshy" target="_blank" rel="noopener noreferrer">
+                Instagram
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

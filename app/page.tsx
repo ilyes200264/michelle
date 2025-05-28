@@ -1,353 +1,334 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Calendar, Users, MapPin, Phone, Mail, Globe, ChevronDown } from "lucide-react"
-import { LanguageProvider, useLanguage } from "@/components/language-provider"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { SmoothieCard } from "@/components/smoothie-card"
+import { PackageCard } from "@/components/package-card"
+import { WhyChooseUs } from "@/components/why-choose-us"
+import { HowItWorks } from "@/components/how-it-works"
+import { WhereToFindUs } from "@/components/where-to-find-us"
+import { SocialIcons } from "@/components/social-icons"
+import { useLanguage } from "@/components/language-provider"
 
 export default function Home() {
-  return (
-    <LanguageProvider>
-      <HomePage />
-    </LanguageProvider>
-  )
-}
-
-function HomePage() {
-  const { language, setLanguage, t } = useLanguage()
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  const heroSlides = [
-    {
-      title: t("heroTitle"),
-      description: t("heroDescription"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/produit-velo-blender-smoothie-smoocycle-30.jpg-d7ERP6jj8kIP1z1hVzzF0hAJD62pds.jpeg",
-    },
-    {
-      title: t("pedalForFun"),
-      description: t("corporateEventDescription"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/corporatesmakingsmoothies.jpg-wbL8hV3r6cgHixCeLRQ6e9b57IC8f4.jpeg",
-    },
-    {
-      title: t("healthyAndFun"),
-      description: t("festivalsMarketsDescription"),
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bike-n-blend-smoothie-bike-fun.jpg-WjlsqLWWpcQ5JIeg9d92tM53HvEjUd.jpeg",
-    },
-  ]
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [heroSlides.length])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      const headerOffset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
-    }
-    setIsMenuOpen(false)
-  }
+  const { t } = useLanguage()
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? "bg-white shadow-md" : "bg-transparent"}`}
-      >
-        <div className="container flex items-center justify-between h-16 px-4 md:px-6">
-          <Link href="/" className="flex items-center gap-2">
-            <motion.span
-              className="text-2xl font-bold text-yellow-500"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Frooshy
-            </motion.span>
-          </Link>
-          <nav className="hidden md:flex gap-6">
-            <Link
-              href="#about"
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection("about")
-              }}
-            >
-              {t("about")}
-            </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:underline underline-offset-4">
-                {t("packages")}
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>
-                  <Link href="/packages/solo" className="w-full">
-                    {t("soloPackage")}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/packages/duo" className="w-full">
-                    {t("duoPackage")}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/packages/group" className="w-full">
-                    {t("groupPackage")}
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Link href="/events" className="text-sm font-medium hover:underline underline-offset-4">
-              {t("events")}
-            </Link>
-            <Link
-              href="#contact"
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection("contact")
-              }}
-            >
-              {t("contact")}
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
-              className="hidden md:flex"
-            >
-              <Globe className="h-5 w-5" />
-              <span className="ml-2">{language === "fr" ? "EN" : "FR"}</span>
+      {/* Hero Section */}
+      <section className="relative h-[80vh]">
+        <div className="absolute inset-0">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Packages-596-Edit.jpg-veTSUiKvW0z4E2gZWmU1rhawwuphD1.jpeg"
+            alt="Frooshy - Service de smoothies pour événements"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">{t("hero.title")}</h1>
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl animate-slide-up">{t("hero.subtitle")}</p>
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Link href="/contact">{t("hero.cta.book")}</Link>
             </Button>
-            <Button className="hidden md:flex bg-green-500 hover:bg-green-600">{t("bookNow")}</Button>
-          </div>
-          <Button variant="outline" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <span className="sr-only">Toggle menu</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-6 w-6"
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border-white"
             >
-              {isMenuOpen ? (
-                <>
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </>
-              ) : (
-                <>
-                  <line x1="4" x2="20" y1="12" y2="12" />
-                  <line x1="4" x2="20" y1="6" y2="6" />
-                  <line x1="4" x2="20" y1="18" y2="18" />
-                </>
-              )}
-            </svg>
+              <Link href="#packages">{t("hero.cta.discover")}</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <HowItWorks />
+
+      {/* Featured Smoothies */}
+      <section className="py-16 bg-gradient-to-r from-background to-muted">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">{t("smoothies.title")}</h2>
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <SmoothieCard
+                  name="Berry Blast"
+                  description="Fraises, bleuets, framboises et yogourt"
+                  image="/images/smoothie-1.jpg"
+                  color="bg-red-100"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <SmoothieCard
+                  name="Green Machine"
+                  description="Épinards, kiwi, pomme et banane"
+                  image="/images/smoothie-2.jpg"
+                  color="bg-green-100"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <SmoothieCard
+                  name="Tropical Paradise"
+                  description="Mangue, ananas, fruit de la passion"
+                  image="/images/smoothie-3.jpg"
+                  color="bg-yellow-100"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <SmoothieCard
+                  name="Protein Power"
+                  description="Banane, beurre d'arachide, cacao et protéine"
+                  image="/images/smoothie-4.jpg"
+                  color="bg-amber-100"
+                />
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+          <div className="text-center mt-8">
+            <Button asChild variant="outline">
+              <Link href="/recipes">{t("smoothies.viewAll")}</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Packages Section */}
+      <section id="packages" className="py-16 bg-gradient-to-b from-background to-secondary/10">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">{t("packages.title")}</h2>
+          <p className="text-center mb-12 max-w-2xl mx-auto">{t("packages.subtitle")}</p>
+
+          {/* Event Type Categories */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary">
+              <div className="relative h-48">
+                <Image
+                  src="/images/corporate-events.jpg"
+                  alt={t("packages.corporate.title")}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <h3 className="text-white text-xl font-bold p-4">{t("packages.corporate.title")}</h3>
+                </div>
+              </div>
+              <CardContent className="p-4">
+                <p className="mb-4">{t("packages.corporate.desc")}</p>
+                <Button asChild className="w-full">
+                  <Link href="/packages/corporate">{t("packages.viewAll")}</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary">
+              <div className="relative h-48">
+                <Image
+                  src="/images/private-events.jpg"
+                  alt={t("packages.private.title")}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <h3 className="text-white text-xl font-bold p-4">{t("packages.private.title")}</h3>
+                </div>
+              </div>
+              <CardContent className="p-4">
+                <p className="mb-4">{t("packages.private.desc")}</p>
+                <Button asChild className="w-full">
+                  <Link href="/packages/private">{t("packages.viewAll")}</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary">
+              <div className="relative h-48">
+                <Image src="/images/festivals.jpg" alt={t("packages.festivals.title")} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <h3 className="text-white text-xl font-bold p-4">{t("packages.festivals.title")}</h3>
+                </div>
+              </div>
+              <CardContent className="p-4">
+                <p className="mb-4">{t("packages.festivals.desc")}</p>
+                <Button asChild className="w-full">
+                  <Link href="/packages/festivals">{t("packages.viewAll")}</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Featured Packages */}
+          <h3 className="text-2xl font-bold text-center mb-8">{t("packages.featured.title")}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <PackageCard
+              title={t("packages.discovery.title")}
+              price={t("packages.discovery.price")}
+              description={t("packages.discovery.desc")}
+              features={[
+                t("packages.feature.hours2"),
+                t("packages.feature.recipes3"),
+                t("packages.feature.equipment"),
+                t("packages.feature.staff1"),
+                t("packages.feature.customBasic"),
+              ]}
+              popular={false}
+              href="/packages/discovery"
+            />
+            <PackageCard
+              title={t("packages.popular.title")}
+              price={t("packages.popular.price")}
+              description={t("packages.popular.desc")}
+              features={[
+                t("packages.feature.hours3"),
+                t("packages.feature.recipes5"),
+                t("packages.feature.equipment"),
+                t("packages.feature.staff2"),
+                t("packages.feature.customFull"),
+                t("packages.feature.catering"),
+              ]}
+              popular={true}
+              href="/packages/popular"
+            />
+            <PackageCard
+              title={t("packages.premium.title")}
+              price={t("packages.premium.price")}
+              description={t("packages.premium.desc")}
+              features={[
+                t("packages.feature.hours4"),
+                t("packages.feature.recipes6"),
+                t("packages.feature.equipmentPremium"),
+                t("packages.feature.staff3"),
+                t("packages.feature.customFull"),
+                t("packages.feature.cateringFull"),
+                t("packages.feature.branding"),
+              ]}
+              popular={false}
+              href="/packages/premium"
+            />
+          </div>
+          <div className="text-center mt-10">
+            <Button asChild size="lg">
+              <Link href="/packages">{t("packages.viewAll")}</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
+
+      {/* Where To Find Us Section */}
+      <WhereToFindUs />
+
+      {/* Testimonials */}
+      <section className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">{t("testimonials.title")}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="bg-white">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="text-amber-400 flex">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+                <p className="italic mb-4">
+                  "Frooshy a transformé notre événement d'entreprise! Les smoothies étaient délicieux et le service
+                  impeccable. Nos employés en parlent encore!"
+                </p>
+                <div className="font-semibold">Marie Tremblay</div>
+                <div className="text-sm text-muted-foreground">Directrice RH, TechMontréal</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="text-amber-400 flex">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+                <p className="italic mb-4">
+                  "Pour notre mariage, nous voulions quelque chose d'unique. Frooshy a dépassé nos attentes avec un bar
+                  à smoothies personnalisé qui a ravi tous nos invités!"
+                </p>
+                <div className="font-semibold">Jean et Sophie Lavoie</div>
+                <div className="text-sm text-muted-foreground">Mariés en 2023</div>
+              </CardContent>
+            </Card>
+            <Card className="bg-white">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="text-amber-400 flex">
+                    {[...Array(5)].map((_, i) => (
+                      <svg
+                        key={i}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+                <p className="italic mb-4">
+                  "Notre festival avait besoin d'options de boissons saines. Frooshy a fourni un service exceptionnel
+                  pendant 3 jours, avec des smoothies adaptés à notre thématique!"
+                </p>
+                <div className="font-semibold">Pierre Gagnon</div>
+                <div className="text-sm text-muted-foreground">Organisateur, Festival Éco-Québec</div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-primary text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">{t("cta.title")}</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">{t("cta.subtitle")}</p>
+          <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+            <Link href="/contact">{t("cta.button")}</Link>
           </Button>
         </div>
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-b">
-            <div className="container py-4 px-4 space-y-3">
-              <Link
-                href="#about"
-                className="block py-2 text-sm font-medium hover:text-green-600"
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection("about")
-                }}
-              >
-                {t("about")}
-              </Link>
-              <div className="py-2">
-                <div className="flex items-center justify-between text-sm font-medium">
-                  <span>{t("packages")}</span>
-                </div>
-                <div className="pl-4 mt-2 space-y-2">
-                  <Link
-                    href="/packages/solo"
-                    className="block py-1 text-sm hover:text-green-600"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {t("soloPackage")}
-                  </Link>
-                  <Link
-                    href="/packages/duo"
-                    className="block py-1 text-sm hover:text-green-600"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {t("duoPackage")}
-                  </Link>
-                  <Link
-                    href="/packages/group"
-                    className="block py-1 text-sm hover:text-green-600"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {t("groupPackage")}
-                  </Link>
-                </div>
-              </div>
-              <Link
-                href="/events"
-                className="block py-2 text-sm font-medium hover:text-green-600"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("events")}
-              </Link>
-              <Link
-                href="#contact"
-                className="block py-2 text-sm font-medium hover:text-green-600"
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection("contact")
-                }}
-              >
-                {t("contact")}
-              </Link>
-              <div className="flex items-center justify-between pt-2 border-t">
-                <Button variant="ghost" size="sm" onClick={() => setLanguage(language === "fr" ? "en" : "fr")}>
-                  <Globe className="h-4 w-4 mr-2" />
-                  {language === "fr" ? "English" : "Français"}
-                </Button>
-                <Button size="sm" className="bg-green-500 hover:bg-green-600">
-                  {t("bookNow")}
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-      </header>
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-yellow-50 to-white">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-green-600">
-                  The Smoothie Parade is a drinkable show!
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
-                  Offer a moment of active, healthy and festive happiness to your community.
-                </p>
-              </div>
-              <div className="space-x-4">
-                <Link href="/packages">
-                  <Button className="bg-green-600 hover:bg-green-700 text-white">
-                    Discover Our Packages
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline">
-                    Contact Us
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+      </section>
 
-        <section className="w-full py-12 md:py-24 bg-white">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-              <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-green-600">
-                  Smoothie Parade Package
-                </h2>
-                <p className="text-xl text-gray-600">
-                  Three bikes. Triple the fun. An unforgettable vibe!
-                </p>
-                <p className="text-gray-600">
-                  Roll out the energy, color, and joy! The Smoothie Parade is our most festive and interactive package — designed to turn any event into a celebration of movement and flavor.
-                </p>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">This package includes:</h3>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-600">
-                    <li>2 adult bikes + 1 kid-friendly bike (ages 5 to 10)</li>
-                    <li>Fresh, colorful smoothies made on-site with crowd participation</li>
-                    <li>Lively entertainment with music, festive energy, and fun interaction</li>
-                  </ul>
-                </div>
-                <Link href="/packages">
-                  <Button className="bg-green-600 hover:bg-green-700 text-white">
-                    View All Packages
-                  </Button>
-                </Link>
-              </div>
-              <div className="relative h-[400px] bg-gray-200 rounded-lg">
-                {/* Add image here */}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="w-full py-12 md:py-24 bg-green-50">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-3">
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold">Healthy & Fun</h3>
-                <p className="text-gray-600">
-                  Combine physical activity with delicious, fresh smoothies for a unique experience.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold">Interactive</h3>
-                <p className="text-gray-600">
-                  Engage your guests in a fun, participatory activity that creates lasting memories.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold">Eco-Friendly</h3>
-                <p className="text-gray-600">
-                  Our pedal-powered bikes are environmentally friendly and promote sustainable fun.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer className="w-full py-6 border-t">
-        <div className="container px-4 md:px-6 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Frooshy. {t("allRightsReserved")}
-        </div>
-      </footer>
+      {/* Social Icons */}
+      <SocialIcons />
     </div>
   )
 }
