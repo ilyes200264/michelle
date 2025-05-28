@@ -63,6 +63,10 @@ export default function EventsPage() {
         <div className="absolute inset-0">
           <Image src="/images/events-hero.jpg" alt="Événements - Frooshy" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-black/40" />
+          {/* Image décorative vélo à smoothie */}
+          <div className="absolute bottom-4 right-4 w-40 h-40 hidden md:block">
+            <Image src="/images/velo-smoothie-1.jpg" alt="Vélo à smoothie" fill className="object-contain rounded-full shadow-lg" />
+          </div>
         </div>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">Événements</h1>
@@ -76,26 +80,32 @@ export default function EventsPage() {
       <section className="py-16 bg-gradient-to-b from-background to-muted">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Événements à venir</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {upcomingEvents.map((event) => (
-              <Card key={event.id} className="hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">{event.name}</h3>
-                      <p className="text-primary font-semibold">{event.date}</p>
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            {/* Image vélo à smoothie ambiance */}
+            <div className="w-full md:w-1/3 mb-8 md:mb-0 flex-shrink-0">
+              <Image src="/images/velo-smoothie-2.jpg" alt="Ambiance vélo à smoothie" width={400} height={400} className="rounded-xl shadow-lg object-cover" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+              {upcomingEvents.map((event) => (
+                <Card key={event.id} className="hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">{event.name}</h3>
+                        <p className="text-primary font-semibold">{event.date}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm text-muted-foreground">{event.location}</p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-sm text-muted-foreground">{event.location}</p>
-                    </div>
-                  </div>
-                  <p className="mb-4">{event.description}</p>
-                  <Button asChild variant="outline">
-                    <Link href="/contact">Plus d'infos</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                    <p className="mb-4">{event.description}</p>
+                    <Button asChild variant="outline">
+                      <Link href="/contact">Plus d'infos</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -104,6 +114,10 @@ export default function EventsPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Événements passés</h2>
+          {/* Image équipe en haut de la section */}
+          <div className="flex justify-center mb-8">
+            <Image src="/images/equipe-frooshy.jpg" alt="L'équipe Frooshy" width={350} height={250} className="rounded-lg shadow-md object-cover" />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pastEvents.map((event) => (
               <Card key={event.id} className="bg-muted">
@@ -127,6 +141,10 @@ export default function EventsPage() {
               Que ce soit pour un événement corporatif, un mariage, un anniversaire ou tout autre célébration, nous
               apportons une touche unique et mémorable avec nos vélos à smoothies.
             </p>
+            {/* Image vélo à smoothie ambiance 2 */}
+            <div className="flex justify-center mb-8">
+              <Image src="/images/velo-smoothie-3.jpg" alt="Vélo à smoothie événement" width={350} height={250} className="rounded-lg shadow-md object-cover" />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary mb-2">500+</div>
@@ -155,6 +173,10 @@ export default function EventsPage() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Suivez-nous sur les réseaux sociaux pour rester informé de nos apparitions publiques et événements spéciaux.
           </p>
+          {/* Image vélo à smoothie décorative en bas de page */}
+          <div className="flex justify-center mb-8">
+            <Image src="/images/velo-smoothie-1.jpg" alt="Vélo à smoothie" width={200} height={200} className="rounded-full shadow-lg object-cover" />
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
               <Link href="https://www.facebook.com/frooshy" target="_blank" rel="noopener noreferrer">
