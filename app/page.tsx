@@ -31,8 +31,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/30" />
         </div>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-pink-600 mb-6 animate-fade-in">{t("hero.title")}</h1>
-          <p className="text-xl md:text-2xl text-green-700 mb-8 max-w-2xl animate-slide-up">{t("hero.subtitle")}</p>
+          <h1 className="text-4xl md:text-6xl font-bold !text-pink-600 mb-6 animate-fade-in">{t("hero.title")}</h1>
+          <p className="text-xl md:text-2xl !text-green-700 mb-8 max-w-2xl animate-slide-up">{t("hero.subtitle")}</p>
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay">
             <Button asChild size="lg" className="bg-pink-500 hover:bg-pink-600 text-white">
               <Link href="/contact">{t("hero.cta.book")}</Link>
