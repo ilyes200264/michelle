@@ -156,7 +156,7 @@ export default function Home() {
 
             <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-2 border-green-300 bg-green-100">
               <div className="relative h-48">
-                <Image src="/images/festivals.jpg" alt={t("packages.festivals.title")}" fill className="object-cover" />
+                <Image src="/images/festivals.jpg" alt={t("packages.festivals.title")} fill className="object-cover" />
                 <div className="absolute inset-0 flex items-end">
                   <h3 className="text-green-600 text-xl font-bold p-4 bg-white/80 rounded-t-xl w-full">{t("packages.festivals.title")}</h3>
                 </div>
