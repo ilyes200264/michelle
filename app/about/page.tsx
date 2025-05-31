@@ -32,30 +32,21 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">{t("about.story.title", "Notre histoire")}</h2>
+              <h2 className="text-3xl font-bold mb-6">Qui sommes-nous&nbsp;?</h2>
               <p className="mb-4">
-                {t(
-                  "about.story.p1",
-                  "Frooshy est né de la passion de deux amies pour la santé, le bien-être et l'envie de créer des moments de joie lors d'événements. Inspirées par le concept des vélos à smoothies découvert lors d'un voyage, nous avons décidé d'apporter cette expérience unique au Québec.",
-                )}
+                Nous sommes Leen et Micha, deux sœurs complices, unies par une passion commune pour la nature, l'alimentation saine et le vélo. De cette passion est née Frooshie Smoothie Vélo : une entreprise rafraîchissante qui transforme l'énergie en plaisir… au sens propre !
               </p>
               <p className="mb-4">
-                {t(
-                  "about.story.p2",
-                  "Depuis 2021, nous parcourons la province avec nos vélos à smoothies, transformant chaque événement en une expérience mémorable. Notre mission est simple : offrir des boissons saines et délicieuses tout en créant une animation interactive qui rassemble les gens.",
-                )}
+                Avec nos vélos-blenders, nous permettons aux gens de créer leur propre smoothie en pédalant, dans une ambiance festive, interactive et écoresponsable. Frooshie insuffle vitalité, bonne humeur et énergie positive partout où elle passe — événements, écoles, festivals, entreprises ou journées d'activités, en intérieur comme en extérieur.
               </p>
               <p>
-                {t(
-                  "about.story.p3",
-                  "Aujourd'hui, Frooshy est devenu le leader du service de smoothies pour événements au Québec, avec une équipe passionnée et des milliers de clients satisfaits.",
-                )}
+                Chez Frooshie Smoothie Vélo, on ne regarde pas… on pédale, on rit, on crée.
               </p>
             </div>
             <div className="relative h-96">
               <Image
                 src="/images/founders.jpg"
-                alt={t("about.founders.alt", "Les fondatrices de Frooshy")}
+                alt="Les fondatrices de Frooshy"
                 fill
                 className="object-cover rounded-lg"
               />
