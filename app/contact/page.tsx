@@ -40,7 +40,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative h-[50vh] bg-gradient-to-r from-primary/20 to-secondary/20">
         <div className="absolute inset-0">
-          <Image src="/images/contact-hero.jpg" alt="Contactez-nous - Frooshy" fill className="object-cover" priority />
+          <Image src="/images/contact-hero.jpg" alt="Contactez-nous - Voilà Vélo" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
@@ -265,7 +265,7 @@ export default function ContactPage() {
                         </svg>
                       </a>
                       <a
-                        href="https://www.instagram.com/frooshy"
+                        href="https://www.instagram.com/voilavelo"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:text-primary/80"
@@ -287,7 +287,7 @@ export default function ContactPage() {
                         </svg>
                       </a>
                       <a
-                        href="https://www.linkedin.com/company/frooshy"
+                        href="https://www.linkedin.com/company/voilavelo"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:text-primary/80"

@@ -9,7 +9,7 @@ import { SiteHeader } from "@/components/site-header"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Frooshy - Service de smoothies pour événements",
+  title: "Voilà Vélo - Service de smoothies pour événements",
   description: "Service de smoothies pour vos événements corporatifs et privés au Québec",
     generator: 'v0.dev'
 }
@@ -30,7 +30,7 @@ export default function RootLayout({
               <footer className="border-t py-6 md:py-0">
                 <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
                   <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-                    &copy; {new Date().getFullYear()} Frooshy. Tous droits réservés.
+                    &copy; {new Date().getFullYear()} Voilà Vélo. Tous droits réservés.
                   </p>
                 </div>
               </footer>

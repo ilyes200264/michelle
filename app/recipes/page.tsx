@@ -238,7 +238,7 @@ export default function RecipesPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Prêt à goûter nos délicieux smoothies?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Réservez Frooshy pour votre prochain événement et offrez une expérience gustative unique à vos invités.
+            Réservez Voilà Vélo pour votre prochain événement et offrez une expérience gustative unique à vos invités.
           </p>
           <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
             <Link href="/contact">Réserver maintenant</Link>

@@ -4,7 +4,7 @@ export function SocialIcons() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
       <Link
-        href="https://www.facebook.com/frooshy"
+        href="https://www.facebook.com/voilavelo"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all"
@@ -25,7 +25,7 @@ export function SocialIcons() {
         <span className="sr-only">Facebook</span>
       </Link>
       <Link
-        href="https://www.instagram.com/frooshy"
+        href="https://www.instagram.com/voilavelo"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 transition-all"

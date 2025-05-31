@@ -116,7 +116,7 @@ export default function EventsPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-green-600">Événements passés</h2>
           <div className="flex justify-center mb-8">
-            <Image src="/images/equipe-frooshy.jpg" alt="L'équipe Frooshy" width={350} height={250} className="rounded-lg shadow-md object-cover border-4 border-yellow-300" />
+            <Image src="/images/equipe-frooshy.jpg" alt="L'équipe Voilà Vélo" width={350} height={250} className="rounded-lg shadow-md object-cover border-4 border-yellow-300" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pastEvents.map((event, idx) => {

@@ -22,7 +22,7 @@ const translations = {
     "nav.contact": "Contact",
 
     // Hero
-    "hero.title": "Frooshy",
+    "hero.title": "Voilà Vélo",
     "hero.subtitle": "Service de smoothies pour vos événements corporatifs et privés au Québec",
     "hero.cta.book": "Réserver maintenant",
     "hero.cta.discover": "Découvrir nos forfaits",
@@ -89,7 +89,7 @@ const translations = {
     "packages.popular.tag": "Populaire",
 
     // Why Choose Us
-    "why.title": "Pourquoi choisir Frooshy?",
+    "why.title": "Pourquoi choisir Voilà Vélo?",
     "why.subtitle": "Une expérience unique et mémorable pour vos événements, pour tous les âges",
     "why.fresh.title": "Ingrédients frais et locaux",
     "why.fresh.desc":
@@ -124,16 +124,16 @@ const translations = {
     "cta.button": "Demander un devis",
 
     // About page
-    "about.title": "À propos de Frooshy",
+    "about.title": "À propos de Voilà Vélo",
     "about.subtitle": "Une passion pour les smoothies et le bien-être",
     "about.story.title": "Notre histoire",
     "about.story.p1":
-      "Frooshy est né de la passion de deux amies pour la santé, le bien-être et l'envie de créer des moments de joie lors d'événements. Inspirées par le concept des vélos à smoothies découvert lors d'un voyage, nous avons décidé d'apporter cette expérience unique au Québec.",
+      "Voilà Vélo est né de la passion de deux amies pour la santé, le bien-être et l'envie de créer des moments de joie lors d'événements. Inspirées par le concept des vélos à smoothies découvert lors d'un voyage, nous avons décidé d'apporter cette expérience unique au Québec.",
     "about.story.p2":
       "Depuis 2021, nous parcourons la province avec nos vélos à smoothies, transformant chaque événement en une expérience mémorable. Notre mission est simple : offrir des boissons saines et délicieuses tout en créant une animation interactive qui rassemble les gens.",
     "about.story.p3":
-      "Aujourd'hui, Frooshy est devenu le leader du service de smoothies pour événements au Québec, avec une équipe passionnée et des milliers de clients satisfaits.",
-    "about.founders.alt": "Les fondatrices de Frooshy",
+      "Aujourd'hui, Voilà Vélo est devenu le leader du service de smoothies pour événements au Québec, avec une équipe passionnée et des milliers de clients satisfaits.",
+    "about.founders.alt": "Les fondatrices de Voilà Vélo",
     "about.values.title": "Nos valeurs",
     "about.values.health.title": "Santé et bien-être",
     "about.values.health.desc": "Nous croyons que manger sainement peut être délicieux et amusant.",
@@ -158,7 +158,7 @@ const translations = {
     "nav.contact": "Contact",
 
     // Hero
-    "hero.title": "Frooshy",
+    "hero.title": "Voilà Vélo",
     "hero.subtitle": "Smoothie service for your corporate and private events in Quebec",
     "hero.cta.book": "Book Now",
     "hero.cta.discover": "Discover Our Packages",
@@ -224,7 +224,7 @@ const translations = {
     "packages.popular.tag": "Popular",
 
     // Why Choose Us
-    "why.title": "Why Choose Frooshy?",
+    "why.title": "Why Choose Voilà Vélo?",
     "why.subtitle": "A unique and memorable experience for your events, for all ages",
     "why.fresh.title": "Fresh and Local Ingredients",
     "why.fresh.desc": "We only use fresh fruits and quality ingredients, prioritizing local Quebec producers.",
@@ -257,16 +257,16 @@ const translations = {
     "cta.button": "Request a Quote",
 
     // About page
-    "about.title": "About Frooshy",
+    "about.title": "About Voilà Vélo",
     "about.subtitle": "A passion for smoothies and well-being",
     "about.story.title": "Our Story",
     "about.story.p1":
-      "Frooshy was born from the passion of two friends for health, well-being, and the desire to create moments of joy at events. Inspired by the concept of smoothie bikes discovered during a trip, we decided to bring this unique experience to Quebec.",
+      "Voilà Vélo was born from the passion of two friends for health, well-being, and the desire to create moments of joy at events. Inspired by the concept of smoothie bikes discovered during a trip, we decided to bring this unique experience to Quebec.",
     "about.story.p2":
       "Since 2021, we have been traveling the province with our smoothie bikes, transforming each event into a memorable experience. Our mission is simple: to offer healthy and delicious drinks while creating an interactive animation that brings people together.",
     "about.story.p3":
-      "Today, Frooshy has become the leader in smoothie services for events in Quebec, with a passionate team and thousands of satisfied customers.",
-    "about.founders.alt": "The founders of Frooshy",
+      "Today, Voilà Vélo has become the leader in smoothie services for events in Quebec, with a passionate team and thousands of satisfied customers.",
+    "about.founders.alt": "The founders of Voilà Vélo",
     "about.values.title": "Our Values",
     "about.values.health.title": "Health and Well-being",
     "about.values.health.desc": "We believe that eating healthy can be delicious and fun.",
